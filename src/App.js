@@ -7,7 +7,8 @@ import './App.css';
 import Navigation from './components/Navigation'
 
 import OptionsTab from './components/OptionsTab';
-import ActivityPrompt from './components/ActivityPrompt';
+
+
 
 class App extends Component {
   componentDidMount(){

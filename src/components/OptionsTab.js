@@ -12,7 +12,7 @@ class OptionsTab extends Component{
         return(
             <Tabs className="tabs-fixed-width">
                 <Tab active title="Activities"><ActivityContainer/></Tab>
-                <Tab title="Fences"><FencesContainer/></Tab>
+                
                 
                 
             </Tabs>
