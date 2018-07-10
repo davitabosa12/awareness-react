@@ -4,6 +4,7 @@ import UUID from 'uuid';
 import $ from 'jquery';
 import ActivityEdit from './ActivityEdit';
 import FenceCreateForm from './FenceCreateForm'
+import AwarenessActivity from '../controller/AwarenessActivity';
 
 
 
@@ -13,7 +14,7 @@ class ActivityItem extends Component{
         super(props);
         this.activityName = props.activityName;
         this.packageName = props.packageName;
-        this.handleFenceTypeChange = this.handleFenceTypeChange.bind(this);
+        this.awarenessActivity = new AwarenessActivity(this.packageName,this.activityName);
         this.fenceTypeId = UUID();
         this.fenceMethodId = UUID();
     }
@@ -22,13 +23,8 @@ class ActivityItem extends Component{
             dataset: 1
         });
     }
-    handleFenceTypeChange(){
-        let type = $("#"+ this.fenceTypeId).val();
-        this.setState({
-            dataset: type
-        });
-        alert(type);    
-        
+    formCallback(result){
+        console.log(JSON.stringify(result));        
     }
     render(){
         return(
@@ -37,7 +33,7 @@ class ActivityItem extends Component{
                 actions={[<a href='#mdl-edit' onClick={this.showEdit}>Edit</a>]}
                 reveal={
                 <Row>
-                    <FenceCreateForm/>
+                    <FenceCreateForm onSubmit={this.formCallback}/>
                 </Row>}>
                     <p>From package: {this.packageName} </p>
                 </Card>
